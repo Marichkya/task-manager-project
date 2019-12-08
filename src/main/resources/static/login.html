@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:=http://www.w3.org/1999/xhtml>
+<head>
+    <meta charset="UTF-8">
+    <title>Войти</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="btn btn-success" href="index.html">На головну</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container pt-3 mt-3">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="greenTable border my-0 pt-1 pb-0 mx-auto px-3 form rounded">
+                <h4><img src="svg/sign-in.svg" alt="..." class="large-icons">
+                    <span class="badge badge-light">Вхід</span></h4>
+            </div>
+            <div class="border mt-0 mb-4 py-5 mx-auto px-3 form rounded">
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <label for="username">Email</label><br>
+                        <input class="form-control" id="username" type="text" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль</label><br>
+                        <input class="form-control" id="password" type="password" name="password">
+                    </div>
+                    <input class="btn btn-success float-right" type="submit" id="login" value="Войти"/>
+                </form>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+<div class="container-fluid w-0 p-0 mb-3 pb-3">
+    <div class="row no-gutters">
+        <div class="col-6">
+            <div class="float-right">
+                <div class="btn btn-outline-secondary btn-sm">
+                    <img src="svg/googleIcon.svg" alt="facebook" class="large-icons">
+                    <a href="/login/google" class="badge badge-light">Ввійти через Google</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="float-left">
+                <div class="btn btn-outline-primary btn-sm">
+                    <img src="svg/facebookIcon.svg" alt="facebook" class="large-icons">
+                    <a href="/login/facebook" class="badge badge-primary">Ввійти с Facebook</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container pt-3 mt-3">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="card mb-5">
+                <span class="badge badge-warning ">У вас досі немає аккаунта?</span>
+                <a class="badge badge-light py-2" href="registration.html">Зареєструватися</a>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+<footer>
+    <div class="container-fluid bg-dark">
+        <div class="row">
+            <div class="col vh-10">
+                <span class="badge badge-light my-3 py-3 footer-style">А тут, так-так, саме ось тут, могла бути ваша реклама</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--Modal window-->
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleModal">Вітаємо!</h5>
+            </div>
+            <div class="modal-body">
+                <p id="textModal">Ваш профіль успішно активований</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="closeModal">Закрити</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="js/general.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

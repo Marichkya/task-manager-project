@@ -1,0 +1,289 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Особистий кабінет</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="css/select2/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarText">
+            <div class="d-flex flex-row">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="btn btn-success" href="index.html">На головну</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex flex-row-reverse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="btn btn-success" href="main.html">Особистий кабінет</a>
+                </li>
+                <li class="nav-item active">
+                    <div class="btn-group">
+                        <button id="settings" type="button" class="btn btn-success"
+                                onclick="goToURL('settings.html');">Налаштування
+                        </button>
+                        <button id="settingsDropdown" type="button"
+                                class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg-right">
+                            <div class="btn-group-vertical">
+                                <button type="button" class="dropdown-item; btn btn-outline-success"
+                                        onclick="goToURL('settings.html#personalData');">Особисті
+                                    дані
+                                </button>
+                                <button type="button" class="dropdown-item; btn btn-outline-success"
+                                        onclick="goToURL('settings.html#securitySettings');">
+                                    Безпека
+                                </button>
+                                <button type="button" class="dropdown-item; btn btn-outline-success"
+                                        onclick="goToURL('settings.html#notificationSettings');">
+                                    Налаштування
+                                    сповіщень
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn btn-success" href="/logout">Вийти</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid w-0 p-0">
+    <div class="row no-gutters">
+        <div class="col">
+            <div class="mx-3 mb-1 mt-2 px-3 pt-3 pb-1 my-border rounded" id="activateBlock" hidden>
+                <div id="activateText" class="alert alert-warning" role="alert">
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col mx-3 mb-1 mt-2 px-3 pt-3 pb-1 my-border rounded">
+                        <h4><img src="svg/tasklist.svg" alt="..." class="large-icons"><span
+                                class="badge badge-success m-1"> Списки</span></h4>
+                        <div class="container-fluid my-0 mx-0 py-0 px-0">
+                            <ul class="list-group list-group-horizontal-sm my-0 mx-0 py-0 px-0">
+                                <li class="list-group-item list-group-item-dark col-3-1 mx-0">Назва</li>
+                                <li class="list-group-item list-group-item-dark col-3-2 mx-0">Опис</li>
+                                <li class="list-group-item list-group-item-dark col-3-3 mx-0">Задачі</li>
+                            </ul>
+                            <div id="listTasksLists"></div>
+                            <nav aria-label="Page navigation">
+                                <ul id="pagesTasksList" class="pagination pagination-sm mt-3"></ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mx-3 my-1 px-3 pt-3 pb-1 my-border rounded">
+                        <h4><img src="svg/pin.svg" alt="..." class="large-icons"><span
+                                class="badge badge-success m-1"> Мої задачі</span></h4>
+
+                        <div class="container-fluid my-0 mx-0 py-0 px-0">
+                            <ul class="list-group list-group-horizontal-sm my-0 mx-0 py-0 px-0">
+                                <li class="list-group-item list-group-item-dark col-5-1 mx-0">
+                                    <img src="svg/trashcan.svg" alt="...">
+                                </li>
+                                <li class="list-group-item list-group-item-dark col-5-2 mx-0">
+                                    Заголовок
+                                </li>
+                                <li class="list-group-item list-group-item-dark col-5-3 mx-0">
+                                    Дата і час сповіщення
+                                </li>
+                                <li class="list-group-item list-group-item-dark col-5-4 mx-0">
+                                    Дата і час завершення
+                                </li>
+                                <li class="list-group-item list-group-item-dark col-5-5 mx-0 px-3">
+                                    Виконана
+                                </li>
+                            </ul>
+                            <div id="listMyTasks">
+                            </div>
+                            <nav aria-label="Page navigation">
+                                <ul id="pagesMyTasks" class="pagination pagination-sm mt-3">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mx-3 mb-2 mt-1 px-3 pt-3 pb-1 my-border rounded">
+                        <h4><img src="svg/pin.svg" alt="..." class="large-icons"><span
+                                class="badge badge-success m-1"> Задачі, якими з вами поділились</span></h4>
+                        <div class="container-fluid my-0 mx-0 py-0 px-0">
+                            <ul class="list-group list-group-horizontal-sm my-0 mx-0 py-0 px-0">
+                                <li class="list-group-item list-group-item-dark col-5-1 mx-0">
+                                    <img src="svg/trashcan.svg" alt="...">
+                                </li>
+                                <li class="list-group-item list-group-item-dark col-5-2 mx-0">
+                                    Заголовок
+                                </li>
+                                <li class="list-group-item list-group-item-dark col-5-3 mx-0">
+                                    Дата і час сповіщення
+                                </li>
+                                <li class="list-group-item list-group-item-dark col-5-4 mx-0">
+                                    Дата і час завершення
+                                </li>
+                                <li class="list-group-item list-group-item-dark col-5-5 mx-0 px-3">
+                                    Виконана
+                                </li>
+                            </ul>
+                            <div id="listFriendsTasks"></div>
+                            <nav aria-label="Page navigation">
+                                <ul id="pagesFriendsTasks" class="pagination pagination-sm mt-3"></ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-sm-2 bg-light">
+            <div class="alert alert-dark my-2 mx-2" role="alert">
+                <div class="font-weight-bold">
+                    <div class="font-italic">
+                        <span id="helloMessage"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group-vertical navbar-light bg-light btn-group-sm pt-2 w-100 p-3">
+                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addListModal"
+                        id="addTasklist">
+                    <img src="svg/diff-added.svg" class="float-left" alt="..."> Добавити список
+                </button>
+                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addTaskModal"
+                        id="addTask">
+                    <img src="svg/diff-added.svg" class="float-left" alt="..."> Добавити задачу
+                </button>
+                <button type="button" class="btn btn-outline-success" id="deleteTaskButton">
+                    <img src="svg/diff-removed.svg" class="float-left" alt="..."> Видалити задач[у/і]
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container-fluid bg-dark">
+        <div class="row">
+            <div class="col vh-10">
+                <span class="badge badge-light my-3 py-3 footer-style">Тут може бути реклама, якщо добряче заплатите :)</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- List modal window -->
+<div id="addListModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header greenTable rounded">
+                <h4>
+                    <img src="svg/tasklist.svg" alt="add" class="large-icons">
+                    <span class="badge badge-light">Додавання нового списку задач</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="listName">Назва</label><br>
+                        <input class="form-control my-border" type="text" id="listName" placeholder="Заголовок"/>
+                        <span id="listNameText" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="listDescription">Опис</label><br>
+                        <input class="form-control my-border" type="text" id="listDescription" placeholder="Опис"/>
+                    </div>
+                </form>
+                <span id="listMessageSpan" class="text-success"></span>
+            </div>
+            <div class="modal-footer rounded">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Закрити</button>
+                <button class="btn btn-success" type="button" id="addListButton">Добавити</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Task modal window -->
+<div id="addTaskModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header greenTable rounded">
+                <h4>
+                    <img src="svg/clippy.svg" alt="add" class="large-icons">
+                    <span class="badge badge-light">Додавання нової задачі</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="taskTitle">Заголовок</label><br>
+                        <input class="form-control my-border" type="text" id="taskTitle" placeholder="Заголовок"/>
+                        <span id="titleSpan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskText">Опис задачі</label><br>
+                        <input class="form-control my-border" type="text" id="taskText" placeholder="Опис"/>
+                        <span id="textSpan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateFinish">Дата і час завершення</label><br>
+                        <input class="form-control my-border" type="datetime-local" id="dateFinish" placeholder="Date"/>
+                        <span id="dateFinishSpan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateToNotify">Дата і час сповіщення</label><br>
+                        <input class="form-control my-border" type="datetime-local" id="dateToNotify"
+                               placeholder="Date"/>
+                        <span id="dateToNotifySpan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskPriority">Пріоритет задачі</label><br>
+                        <select id="taskPriority" class="form-control my-border">
+                            <option selected></option>
+                            <option class="alert alert-danger">Високий</option>
+                            <option class="alert alert-warning">Середній</option>
+                            <option class="alert alert-success">Низький</option>
+                        </select>
+                        <span id="taskPrioritySpan" class="text-danger"></span>
+                    </div>
+                </form>
+                <span id="taskMessageSpan" class="text-success"></span>
+            </div>
+            <div class="modal-footer rounded">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal" id="closeTaskButton">Закрити
+                </button>
+                <button class="btn btn-success" type="button" id="addTaskButton">Добавити</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"
+        crossorigin="anonymous"></script>
+<script src="js/select2/select2.min.js"></script>
+<script src="js/general.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

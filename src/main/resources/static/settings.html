@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Налаштування</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarText">
+            <div class="d-flex flex-row">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="btn btn-success" href="index.html">На головну</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex flex-row-reverse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="btn btn-success" href="main.html">Особистий кабінет</a>
+                </li>
+                <li class="nav-item active">
+                    <div class="btn-group">
+                        <button id="settings" type="button" class="btn btn-success"
+                                onclick="goToURL('settings.html');">Налаштування
+                        </button>
+                        <button id="settingsDropdown" type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg-right">
+                            <div class="btn-group-vertical">
+                                <button type="button" class="dropdown-item; btn btn-outline-success"
+                                        onclick="goToURL('settings.html#personalData');">Особисті
+                                    дані
+                                </button>
+                                <button type="button" class="dropdown-item; btn btn-outline-success"
+                                        onclick="goToURL('settings.html#securitySettings');">
+                                    Безпека
+                                </button>
+                                <button type="button" class="dropdown-item; btn btn-outline-success"
+                                        onclick="goToURL('settings.html#notificationSettings');">
+                                    Налаштування
+                                    сповіщень
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn btn-success" href="/logout">Вийти</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div class="row  pb-3">
+        <div class="col">
+            <div class="container">
+                <div class="row" id="personalData">
+                    <div class="card w-100 my-1 my-border rounded">
+                        <div class="card-body">
+                            <h4 class="card-title"><img src="img/personalDataIcon.png" alt="..." class="large-icons">
+                                <span
+                                        class="badge badge-success">Особисті дані</span></h4>
+                        </div>
+                        <div class="mt-1 mb-2 py-3 px-3 form">
+                            <div class="form-group">
+                                <div class="btn-outline-dark text-wrap rounded settingsInfo">
+                                    <label for="name">Нікнейм:</label>
+                                    <h5 class="font-italic" id="name"></h5>
+                                </div>
+                                <div class="btn-outline-dark text-wrap rounded settingsInfo">
+                                    <label for="phone">Телефон:</label>
+                                    <h5 class="font-italic" id="phone"></h5>
+                                </div>
+                            </div>
+                            <form>
+                                <div class="form-group pt-3 pb-1">
+                                    <label for="inputLogin">Никнейм</label>
+                                    <input type="text" class="form-control" id="inputLogin" name="login"
+                                           placeholder="newName">
+                                    <div class="float-left">
+                                        <small id="loginHelp" class="form-text text-muted"><p class="text-danger"><span
+                                                id="loginText"></span></p></small>
+                                    </div>
+                                </div>
+                                <div class="form-group pt-1 pb-3">
+                                    <label for="inputPhone">Телефон</label>
+                                    <input type="text" class="form-control" id="inputPhone" name="phone"
+                                           placeholder="+380931111111">
+                                    <div class="float-left">
+                                        <small id="phoneHelp" class="form-text text-muted"><p class="text-danger"><span
+                                                id="phoneText"></span></p></small>
+                                    </div>
+                                </div>
+                                <div class="float-right">
+                                    <input id="savePersonalData" class="btn btn-success" type="button"
+                                           value="Зберегти зміни"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="securitySettings">
+                    <div class="card w-100 my-1 my-border rounded">
+                        <div class="card-body">
+                            <h4 class="card-title"><img src="img/securityIcon.png" alt="..." class="large-icons"> <span
+                                    class="badge badge-success">Безпека</span></h4>
+                        </div>
+                        <div class="my-2 py-3 px-3 form">
+                            <form id="securityForm">
+                                <fieldset id="fieldset">
+                                    <div class="form-group py-3">
+                                        <label for="inputPasswordOld" class="col-sm-2 col-form-label">Старий
+                                            пароль</label>
+                                        <input type="password" class="form-control" id="inputPasswordOld"
+                                               name="password"
+                                               placeholder="oldPassword">
+                                        <div class="float-left">
+                                            <small id="passwordHelpOld" class="form-text text-muted"><p
+                                                    class="text-danger"><span
+                                                    id="passwordTextOld"></span></p></small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group py-3">
+                                        <label for="inputPasswordOne" class="col-sm-2 col-form-label">Новий
+                                            пароль</label>
+                                        <input type="password" class="form-control" id="inputPasswordOne"
+                                               name="password"
+                                               placeholder="inputNewPassword">
+                                        <div class="float-left">
+                                            <small id="passwordHelpOne" class="form-text text-muted"><p
+                                                    class="text-danger"><span
+                                                    id="passwordTextOne"></span></p></small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group py-3">
+                                        <label for="inputPasswordTwo" class="col-sm-2 col-form-label">Повторіть
+                                            пароль</label>
+                                        <input type="password" class="form-control" id="inputPasswordTwo"
+                                               name="password"
+                                               placeholder="repeatNewPassword">
+                                        <div class="float-left">
+                                            <small id="passwordHelpTwo" class="form-text text-muted"><p
+                                                    class="text-danger"><span
+                                                    id="passwordTextTwo"></span></p></small>
+                                        </div>
+                                    </div>
+                                    <div class="float-right">
+                                        <input id="saveSecuritySettings" class="btn btn-success" type="button"
+                                               value="Зберегти зміни"/>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="notificationSettings">
+                    <div class="card w-100 my-1 my-border rounded">
+                        <div class="card-body">
+                            <h4 class="card-title"><img src="img/notificationsIcon.png" alt="..." class="large-icons">
+                                <span class="badge badge-success">Настройки сповіщень</span></h4>
+                        </div>
+                        <div class="my-2 py-3 px-3 form">
+                            <form>
+                                <div class="custom-control custom-switch py-2">
+                                    <input type="checkbox" class="custom-control-input" name="email" id="checkEmail">
+                                    <label class="custom-control-label" for="checkEmail">Email</label>
+                                </div>
+                                <div class="custom-control custom-switch py-2">
+                                    <input type="checkbox" class="custom-control-input" name="sms" id="checkSms">
+                                    <label class="custom-control-label" for="checkSms">Sms</label>
+                                    <small id="smsHelp" class="form-text text-muted">
+                                    </small>
+                                </div>
+                                <div class="float-right">
+                                    <input id="saveNotificationSettings" class="btn btn-success" type="button"
+                                           value="Зберегти зміни"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-sm-2 bg-light vh-auto">
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container-fluid bg-dark">
+        <div class="row">
+            <div class="col vh-10">
+                <span class="badge badge-light my-3 py-3 footer-style">Тут може бути ваша реклама, а може й не бути</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal window -->
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleModal"></h5>
+            </div>
+            <div class="modal-body">
+                <p id="textModal"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="closeModal">Закрити</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="js/general.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>
